@@ -8,8 +8,7 @@ namespace GameConsole {
     public class PlayerDisplayer {
         public static void Write(PlayerCharacter player) {
 
-            int days = player.DaySinceLastLogin.GetValueOrDefault(-1);
-            Console.WriteLine($"{days} since last login");
+
 
             if (string.IsNullOrWhiteSpace(player.Name)) {
                 Console.WriteLine("Player name is null or whitespaces");
@@ -17,6 +16,10 @@ namespace GameConsole {
             else {
                 Console.WriteLine(player.Name);
             }
+
+            // int days = player.DaySinceLastLogin.GetValueOrDefault(-1);
+            int days = player.DaySinceLastLogin.HasValue ? player.DaySinceLastLogin.Value : -1;
+            Console.WriteLine($"{days} since last login");
 
             //if (player.DaySinceLastLogin.HasValue) {
             //    Console.WriteLine(player.DaySinceLastLogin.Value);
